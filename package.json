@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+  },
+  "name": "temperature",
+  "description": "ETSII ULL Grado de Informatica",
+  "version": "1.0.0",
+  "main": "temperature.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "open tests/index.html # mac OS"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ULL-ESIT-DSI-1617/programacion-orientada-a-objetos-y-herencia-en-javascript-alberto-diego-35l1-1.git"
+  },
+  "author": "Diego, Alberto",
+  "license": "ISC"
+}
