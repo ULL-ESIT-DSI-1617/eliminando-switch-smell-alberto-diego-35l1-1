@@ -1,17 +1,18 @@
-var Celsius = function(v, to){
-  Temperatura.call(this,v,"Celsius",to);
+var Celsius = function(v){
+  Temperatura.call(this,v,"Celsius");
 }
 
 Celsius.prototype = new Temperatura();
 
-Celsius.prototype.to_F = function(){
-    return new Fahrenheit((this.valor * 9/5)+32, "Fahrenheit");
+Celsius.prototype.toFahrenheit = function(){
+    return new Fahrenheit((this.valor * 9/5)+32, "Fahrenheit").to_s();
   }
 
-Celsius.prototype.to_K = function(){
-    return new Kelvin(this.valor + 273.15, "Kelvin");
+Celsius.prototype.toKelvin = function(){
+    return new Kelvin(this.valor + 273.15, "Kelvin").to_s();
   }
 
+/*
 Celsius.prototype.convert = function(){
     var result;
     if(this.convertir == 'F' || this.convertir == 'f'){
@@ -26,3 +27,7 @@ Celsius.prototype.convert = function(){
       return result;
   }
 }
+*/
+
+var measures = Medida.measures;
+measures.c = Celsius;

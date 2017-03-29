@@ -1,23 +1,28 @@
 
-var Metros = function(v, to){
-  Medida.call(this, v, "m");
-  this.convertir = to;
+var Metros = function(v){
+  Medida.call(this, v, "Metros");
 }
 
 Metros.prototype = new Medida();
 
-Metros.prototype.to_pulgadas = function(){
-    var result;
-    result = (this.valor * 39.3701);
-    result = result.toString() + "\"";
-    return result;
+Metros.prototype.toPulgadas = function(){
+    return new Pulgadas(this.valor * 39.3701, "\"").to_s();
   }
 
-Metros.prototype.convert = function(){
-    if(this.convertir == '\"'){
-      return this.to_pulgadas();
-    }
-    else{
-      return "El formato de destino no es correcto";
-    }
+
+var Pulgadas = function(v){
+  Medida.call(this, v, "Pulgadas");
+}
+
+Pulgadas.prototype = new Medida();
+
+Pulgadas.prototype.toMetros = function(){
+
+    return new Metros(this.valor / 39.3701, "Metros").to_s();
   }
+
+
+
+  var measures = Medida.measures;
+  measures.m = Metros;
+  measures.p = Pulgadas;

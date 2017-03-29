@@ -1,18 +1,19 @@
 
-var Fahrenheit = function(v, to){
-  Temperatura.call(this,v,"Fahrenheit", to);
+var Fahrenheit = function(v){
+  Temperatura.call(this,v,"Fahrenheit");
 }
 
 Fahrenheit.prototype = new Temperatura();
 
-Fahrenheit.prototype.to_C = function(){
-    return new Celsius((this.valor -32) * (5/9), "Celsius");
+Fahrenheit.prototype.toCelsius = function(){
+    return new Celsius((this.valor -32) * (5/9)).to_s();
   }
 
-Fahrenheit.prototype.to_K = function(){
-    return new Kelvin((this.valor + 459.67)*(5/9), "Kelvin");
+Fahrenheit.prototype.toKelvin = function(){
+    return new Kelvin((this.valor + 459.67)*(5/9)).to_s();
   }
 
+/*
 Fahrenheit.prototype.convert = function(){
     var result;
     if(this.convertir == 'C' || this.convertir == 'c'){
@@ -27,4 +28,7 @@ Fahrenheit.prototype.convert = function(){
       return result;
   }
 
-}
+}*/
+
+var measures = Medida.measures;
+measures.f = Fahrenheit;

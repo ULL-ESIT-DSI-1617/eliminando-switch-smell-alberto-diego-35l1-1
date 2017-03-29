@@ -1,8 +1,7 @@
 
 
-var Temperatura = function(v, t, to){
+var Temperatura = function(v, t){
   Medida.call(this, v,t);
-  this.convertir = to;
 
 }
 
