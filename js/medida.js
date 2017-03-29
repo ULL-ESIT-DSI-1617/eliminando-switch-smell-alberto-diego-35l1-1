@@ -12,17 +12,22 @@ Medida.prototype.to_s = function(){
     return string;
   }
 
-  Medida.regexp = /([-+]?\d+(?:\.\d*)?)\s*([fFcCkKmMpP])\s*([fFcCkKpPmM])/;
+  Medida.regexp = XRegExp('(?<src> [-+]?[0-9]+(\.[0-9]+)?(?:e[+-]?[0-9]+)?) #valor              \n' +
+                          '(?<espacio> \\s*)                                                       \n' +
+                  			  '(?<tipo> \\s*[fFcCkKmMpP])                      # tipo de entrada   \n' +
+                  			  '(?<to> \\s*(?:to)?\\s*)                             # to opcional       \n' +
+                  			  '(?<dst> [fFcCkKmMpP])                       # tipo destino', 'x');
+                          
   Medida.measures = {};
 
   Medida.convertir = function(valor) {
 
-    var match = valor.match(Medida.regexp);
+    var match = XRegExp.exec(valor, Medida.regexp);
 
     if (match) {
-      var numero = match[1],
-          tipo   = match[2].toLowerCase(), //pasamos a minuscula
-          destino = match[3].toLowerCase();
+      var numero = match.src,
+          tipo   = match.tipo.toLowerCase(), //pasamos a minuscula
+          destino = match.dst.toLowerCase();
 
       try {
         var source = new measures[tipo](numero); //new measures['k'](35) => new Kelvin(35)
