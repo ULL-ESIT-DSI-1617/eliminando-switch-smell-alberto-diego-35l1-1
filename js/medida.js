@@ -14,10 +14,10 @@ Medida.prototype.to_s = function(){
 
   Medida.regexp = XRegExp('(?<src> [-+]?[0-9]+(\.[0-9]+)?(?:e[+-]?[0-9]+)?) #valor              \n' +
                           '(?<espacio> \\s*)                                                       \n' +
-                  			  '(?<tipo> \\s*[fFcCkKmMpP])                      # tipo de entrada   \n' +
+                  			  '(?<tipo> \\s*[A-Za-z]+)                      # tipo de entrada   \n' +
                   			  '(?<to> \\s*(?:to)?\\s*)                             # to opcional       \n' +
-                  			  '(?<dst> [fFcCkKmMpP])                       # tipo destino', 'x');
-                          
+                  			  '(?<dst> [A-Za-z]+)                       # tipo destino', 'x');
+
   Medida.measures = {};
 
   Medida.convertir = function(valor) {
