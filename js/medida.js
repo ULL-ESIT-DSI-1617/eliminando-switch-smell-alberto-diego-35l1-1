@@ -18,7 +18,7 @@ Medida.prototype.to_s = function(){
                   			  '(?<to> \\s*(?:to)?\\s*)                             # to opcional       \n' +
                   			  '(?<dst> [A-Za-z]+)                       # tipo destino', 'x');
 
-  Medida.measures = {};
+  Medida.measures = Medida.measures || {};
 
   Medida.convertir = function(valor) {
 
